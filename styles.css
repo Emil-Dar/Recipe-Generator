@@ -1,0 +1,110 @@
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #FAF2DB;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.logo {
+    width: 100px;
+}
+.search-bar {
+    flex-grow: 1;
+    margin: 0 15px;
+}
+.search-bar input[type="search"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+}
+.menu {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    flex-grow: 1; /* Adjusted to cover half of the top bar */
+    justify-content: flex-end; /* Aligned to the right */
+}
+.menu li {
+    margin-right: 20px;
+    font-size: 16px;
+    color: #333333;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.menu li:hover {
+    color: #007bff;
+}
+.meal-categories {
+    display: flex;
+    justify-content: space-around;
+    background-color: #dddddd;
+    padding: 15px 0;
+    margin-top: 65px; /* Adjusted to account for the fixed top bar */
+}
+.meal-categories div {
+    text-align: center;
+    font-size: 18px;
+    color: #333333;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.meal-categories div:hover {
+    color: #007bff;
+}
+.recipe-card {
+    background-color: #E5E178;
+    border: 1px solid #FAF2DB;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+.recipe-card:hover {
+    transform: translateY(-5px);
+}
+.recipe-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+.recipe-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+.recipe-info div {
+    font-size: 18px;
+    color: #333333;
+}
+.star-rating {
+    color: orange;
+    font-size: 20px;
+}
+.difficulty {
+    color: green; /* or red for hard */
+    font-size: 16px;
+    font-weight: bold;
+}
+.recipe-description {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #666666;
+}
+</style>
