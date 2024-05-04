@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUTONG LIKHA</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f9f9f9;
+    }
+    .top-bar {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        background: white;
+    }
+    .search-bar {
+        flex-grow: 1;
+        margin: 0 10px;
+    }
+    .search-bar input {
+        width: 100%;
+        padding: 5px;
+    }
+    .menu {
+        list-style: none;
+        display: flex;
+        padding: 0;
+    }
+    .menu li {
+        padding: 10px;
+    }
+    .meal-categories {
+        display: flex;
+        justify-content: space-around;
+        background: #ddd;
+        padding: 10px 0;
+    }
+    .meal-categories div {
+        text-align: center;
+    }
+    .recipe-card {
+        background: white;
+        border: 1px solid #ddd;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .recipe-card img {
+        width: 100%;
+        height: auto;
+    }
+    .recipe-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .recipe-info div,
+    .recipe-info time {
+        margin: 5px 0;
+    }
+    .star-rating {
+        color: orange;
+    }
+    .difficulty {
+        color: green; /* or red for hard */
+    }
+</style>
+</head>
+<body>
+<div class="top-bar">
+    <img src="logo.png" alt="LUTONG LIKHA Logo" width="100">
+    <div class="search-bar">
+        <input type="search" placeholder="Search for recipes">
+    </div>
+    <ul class="menu">
+        <li>Home</li>
+        <li>Trending</li>
+        <li>Saved</li>
+        <li>Profile</li>
+    </ul>
+</div>
+<div class="meal-categories">
+    <div>Breakfast</div>
+    <div>Lunch</div>
+    <div>Dinner</div>
+    <div>Dessert</div>
+</div>
+<div class="recipe-card">
+    <img src="mexican-egg-mix.jpg" alt="Mexican Egg Mix">
+    <div class="recipe-info">
+        <div>
+            <h3>Mexican Egg Mix</h3>
+            <div class="star-rating">⭐4.5</div>
+            <div class="difficulty easy">Easy</div>
+        </div>
+        <time>⏱️ 5 min</time>
+    </div>
+    <p>Description of the dish...</p>
+</div>
+<div class="recipe-card">
+    <img src="mexican-egg-mix.jpg" alt="Mexican Egg Mix">
+    <div class="recipe-info">
+        <div>
+            <h3>Mexican Egg Mix</h3>
+            <div class="star-rating">⭐4.5</div>
+            <div class="difficulty easy">Easy</div>
+        </div>
+        <time>⏱️ 5 min</time>
+    </div>
+    <p>Description of the dish...</p>
+</div>
+<div class="recipe-card">
+    <img src="mexican-egg-mix.jpg" alt="Mexican Egg Mix">
+    <div class="recipe-info">
+        <div>
+            <h3>Mexican Egg Mix</h3>
+            <div class="star-rating">⭐4.5</div>
+            <div class="difficulty easy">Easy</div>
+        </div>
+        <time>⏱️ 5 min</time>
+    </div>
+    <p>Description of the dish...</p>
+</div>
+<!-- Repeat .recipe-card for each recipe -->
+</body>
+</html>
