@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .profile-info {
+            text-align: center;
+            padding: 20px;
+        }
+        .profile-picture {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        .username {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+        .bio {
+            font-style: italic;
+            margin-top: 10px;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-label {
+            font-size: 14px;
+            color: #888;
+        }
+        .stat-value {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        footer {
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <img class="logo" src="image/Logo.png" alt="LUTONG LIKHA Logo">
+        <h1>LUTONG LIKHA</h1>
+        <div class="search-bar">
+            <input type="search" placeholder="Search for recipes">
+        </div>
+        <ul class="menu">
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Trending.html">Trending</a></li>
+            <li><a href="Saved.html">Save</a></li>
+            <li><a href="Profile.html">Profile</a></li>
+        </ul>
+    </div>
+    
+    <header>
+        <h1>TikTok Profile</h1>
+    </header>
+    <div class="profile-info">
+        <img src="profile-picture.jpg" alt="Profile Picture" class="profile-picture">
+        <div class="username">Username</div>
+        <div class="bio">Bio goes here</div>
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-label">Followers</div>
+                <div class="stat-value">100k</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">Following</div>
+                <div class="stat-value">200</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">Likes</div>
+                <div class="stat-value">500k</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 TikTok</p>
+    </footer>
+</body>
+</html>
