@@ -68,7 +68,7 @@ body {
   padding: 20px 40px;
 }
 .spotify-playlists h2 {
-  color: #ffffff;
+  color: #000000;
   font-size: 22px;
   margin-bottom: 20px;
 }
@@ -81,13 +81,13 @@ body {
   min-width: 140px;
   width: 160px;
   padding: 15px;
-  background-color: #181818;
+  background-color: #FFFFF0;
   border-radius: 6px;
   cursor: pointer;
   transition: all ease 0.4s;
 }
 .spotify-playlists .list .item:hover {
-  background-color: #252525;
+  background-color: #FFBF00;
 }
 .spotify-playlists .list .item img {
   width: 100%;
@@ -112,7 +112,7 @@ body {
   transform: translateY(-20px);
 }
 .spotify-playlists .list .item h4 {
-  color: #ffffff;
+  color: #000000;
   font-size: 14px;
   margin-bottom: 10px;
   white-space: nowrap;
@@ -135,20 +135,20 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to right, #ae2896, #509bf5);
+  background: #F5C184;
   padding: 15px 40px;
   display: flex;
   justify-content: space-between;
 }
 .preview h6 {
-  color: #ffffff;
+  color: #000000;
   text-transform: uppercase;
   font-weight: 400;
   font-size: 12px;
   margin-bottom: 10px;
 }
 .preview p {
-  color: #ffffff;
+  color: #000000;
   font-size: 14px;
   font-weight: 500;
 }
@@ -161,4 +161,63 @@ body {
   border: 0px;
   border-radius: 40px;
   cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+.recipe-category {
+  background-color: #fff; /* White background for a clean look */
+  margin-bottom: 20px; /* Space below the category */
+  padding: 20px; /* Padding for inner spacing */
+  border-radius: 10px; /* Rounded corners for a modern feel */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: box-shadow 0.3s ease; /* Smooth transition for shadow on hover */
+}
+
+.recipe-category:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow when hovered */
+}
+
+.recipe-category h2 {
+  margin-top: 0; /* No top margin for the heading */
+  color: #333; /* Dark text color for contrast */
+  font-size: 1.5em; /* Larger font size for the heading */
+}
+
+.recipe-category ul {
+  list-style-type: none; /* No bullet points for a clean list */
+  padding: 0; /* No padding for the list */
+  margin: 0; /* No margin for the list */
+}
+
+.recipe-category ul li {
+  margin-bottom: 10px; /* Space below each list item */
+  padding-left: 15px; /* Indentation for list items */
+  position: relative; /* Positioning context for pseudo-elements */
+}
+
+.recipe-category ul li::before {
+  content: '•'; /* Custom bullet point */
+  color: #666; /* Medium dark color for the bullet point */
+  position: absolute; /* Absolute positioning for the bullet point */
+  left: 0; /* Align bullet point to the left */
+  top: 50%; /* Center bullet point vertically */
+  transform: translateY(-50%); /* Align bullet point with text */
+}
+
+.recipe-category ul li a {
+  color: #666; /* Medium dark text color for links */
+  text-decoration: none; /* No underline for a clean look */
+  transition: color 0.3s ease; /* Smooth transition for color on hover */
+}
+
+.recipe-category ul li a:hover {
+  color: #333; /* Dark text color on hover for emphasis */
+  text-decoration: underline; /* Underline on hover for clarity */
 }
