@@ -56,6 +56,56 @@
             padding: 20px;
             text-align: center;
         }
+        /* CSS to align profile info to the left */
+.container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.profile-info {
+    /* Remove border */
+    /*border: none;*/
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: calc(33.33% - 40px);
+}
+
+.profile-picture {
+    width: 100px; /* Adjust size as needed */
+    height: 100px; /* Adjust size as needed */
+    border-radius: 50%; /* Make it circular */
+}
+
+.username {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.bio {
+    margin-top: 5px;
+}
+
+.stats {
+    margin-top: 20px;
+}
+
+.stat-item {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.stat-label {
+    font-weight: bold;
+}
+
+.stat-value {
+    margin-top: 5px;
+}
+
+
     </style>
 </head>
 <body>
@@ -77,25 +127,30 @@
     <header>
         <h1>TikTok Profile</h1>
     </header>
-    <div class="profile-info">
-        <img src="profile-picture.jpg" alt="Profile Picture" class="profile-picture">
-        <div class="username">Username</div>
-        <div class="bio">Bio goes here</div>
-        <div class="stats">
-            <div class="stat-item">
-                <div class="stat-label">Followers</div>
-                <div class="stat-value">100k</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-label">Following</div>
-                <div class="stat-value">200</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-label">Likes</div>
-                <div class="stat-value">500k</div>
+    <body>
+        <div class="container">
+            <div class="profile-info">
+                <img src="image\profile_pic.jpg" alt="Profile Picture" class="profile-picture">
+                <div class="username">Username</div>
+                <div class="bio">Bio goes here</div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-label">Followers</div>
+                        <div class="stat-value">100k</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Following</div>
+                        <div class="stat-value">200</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Likes</div>
+                        <div class="stat-value">500k</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </body>
+    
     <footer>
         <p>&copy; 2024 TikTok</p>
     </footer>
