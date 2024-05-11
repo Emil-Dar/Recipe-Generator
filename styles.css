@@ -3,7 +3,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f9f9f9;
     margin: 0;
-    padding: 0;
+    padding-top: 80px;
 }
 .top-bar {
     position: fixed;
@@ -33,77 +33,132 @@ body {
     font-size: 16px;
 }
 .menu {
-    list-style: none;
-    display: flex;
-    padding: 0;
-    flex-grow: 1; /* Adjusted to cover half of the top bar */
-    justify-content: flex-end; /* Aligned to the right */
+  list-style: none;
+  display: flex;
+  padding: 0;
+  flex-grow: 1; /* Occupy half of the top bar */
+  justify-content: center; /* Center the links horizontally */
+  align-items: center; /* Center the links vertically */
 }
+
 .menu li {
-    margin-right: 20px;
-    font-size: 16px;
-    color: #333333;
-    cursor: pointer;
-    transition: color 0.3s;
+  margin-right: 20px;
+  font-size: 16px;
+  color: #333333;
+  transition: color 0.3s;
 }
-.menu li:hover {
-    color: #007bff;
+
+.menu li a {
+  text-decoration: none;
+  color: #333333;
 }
-.meal-categories {
-    display: flex;
-    justify-content: space-around;
-    background-color: #dddddd;
-    padding: 15px 0;
-    margin-top: 65px; /* Adjusted to account for the fixed top bar */
+
+.menu li a:hover {
+  color: #007bff;
 }
-.meal-categories div {
-    text-align: center;
-    font-size: 18px;
-    color: #333333;
-    cursor: pointer;
-    transition: color 0.3s;
+
+
+
+
+
+
+
+
+.spotify-playlists {
+  padding: 20px 40px;
 }
-.meal-categories div:hover {
-    color: #007bff;
+.spotify-playlists h2 {
+  color: #ffffff;
+  font-size: 22px;
+  margin-bottom: 20px;
 }
-.recipe-card {
-    background-color: #E5E178;
-    border: 1px solid #FAF2DB;
-    border-radius: 10px;
-    margin: 20px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
+.spotify-playlists .list {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
 }
-.recipe-card:hover {
-    transform: translateY(-5px);
+.spotify-playlists .list .item {
+  min-width: 140px;
+  width: 160px;
+  padding: 15px;
+  background-color: #181818;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all ease 0.4s;
 }
-.recipe-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
+.spotify-playlists .list .item:hover {
+  background-color: #252525;
 }
-.recipe-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 15px;
+.spotify-playlists .list .item img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 10px;
 }
-.recipe-info div {
-    font-size: 18px;
-    color: #333333;
+.spotify-playlists .list .item .play {
+  position: relative;
 }
-.star-rating {
-    color: orange;
-    font-size: 20px;
+.spotify-playlists .list .item .play .fa {
+  position: absolute;
+  right: 10px;
+  top: -60px;
+  padding: 18px;
+  background-color: #1db954;
+  border-radius: 100%;
+  opacity: 0;
+  transition: all ease 0.4s;
 }
-.difficulty {
-    color: green; /* or red for hard */
-    font-size: 16px;
-    font-weight: bold;
+.spotify-playlists .list .item:hover .play .fa {
+  opacity: 1;
+  transform: translateY(-20px);
 }
-.recipe-description {
-    margin-top: 15px;
-    font-size: 16px;
-    color: #666666;
+.spotify-playlists .list .item h4 {
+  color: #ffffff;
+  font-size: 14px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.spotify-playlists .list .item p {
+  color: #989898;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 600;
+}
+.spotify-playlists hr {
+  margin: 70px 0px 0px;
+  border-color: #636363;
+}
+
+.preview {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to right, #ae2896, #509bf5);
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.preview h6 {
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.preview p {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+}
+.preview button {
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 14px 30px;
+  border: 0px;
+  border-radius: 40px;
+  cursor: pointer;
 }
