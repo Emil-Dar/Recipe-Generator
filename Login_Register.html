@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html>
 
-<script type="module" src=Login_Register.js defer></script>
 <head>
     <style>
         body {
             font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5DC;
         }
+
         .container {
             width: 300px;
-            margin: auto;
-        }
-        .logo {
             text-align: center;
+        }
+
+        .logo {
             padding: 20px;
         }
+
         .tagline {
-            text-align: center;
             font-size: 18px;
             color: #333;
         }
+
         .form-group {
             margin-bottom: 15px;
         }
+
         .form-group input {
             width: 100%;
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #ddd;
         }
+
         .btn {
             background-color: orange;
             color: white;
@@ -37,9 +46,18 @@
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
+            box-sizing: border-box;
+            /* Ensure padding is included in width */
         }
+
+        .message {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="logo">
@@ -53,7 +71,8 @@
         <div class="form-group">
             <input type="password" id="password" placeholder="Password">
         </div>
-        <button class="btn" onclick="signUp()">Sign up</button>
+        <button class="btn" onclick="signUp()" id="signup">Sign up</button>
+        <p class="message">Already have an account? <a href="login.html">Log in here</a></p>
     </div>
 
     <script>
@@ -63,10 +82,55 @@
             // You can add your sign up logic here
             console.log('Username:', username);
             console.log('Password:', password);
-            <button>onclick="Home.html"</button>
+            // Redirect to Home.html
+            window.location.href = "Home.html";
         }
     </script>
 
-    <!--Interface Main-->
 </body>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
+    
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyA_baZ5BOgTRN17sVgEu5ZniAIfJXdk4No",
+        authDomain: "recipe-generator-project-4004a.firebaseapp.com",
+        projectId: "recipe-generator-project-4004a",
+        storageBucket: "recipe-generator-project-4004a.appspot.com",
+        messagingSenderId: "197530831320",
+        appId: "1:197530831320:web:7f6075fbb9c48538520aad",
+        measurementId: "G-VZ5SSQ87ZJ"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    // Event listener for sign up button
+    document.getElementById("signup").addEventListener('click', function() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        
+        // Check if any field is empty
+        if (username.trim() === '' || password.trim() === '') {
+            alert("Please fill all the empty fields.");
+            return;
+        }
+
+        // Set user data in the database
+        set(ref(db, 'users/' + username), {
+            username: username,
+            password: password
+        }).then(() => {
+            console.log("User added to database");
+            alert("Successfully signed up!");
+            window.location.href = "index.html"; // Redirect to index.html after sign up
+        }).catch((error) => {
+            console.error("Error adding user to database:", error);
+        });
+    });
+</script>
+
 </html>
