@@ -5,20 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LUTONG LIKHA</title>
     <link rel="stylesheet" href="styles.css"> <!-- Linking the external CSS file -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+
+    <style>
+        .container {
+            margin-top: 1%; /* Adjust the margin-top value as needed */
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+
+        .meal-category {
+            width: 24%; /* 4 divs, each with 24% width to accommodate spacing */
+            height: 300px; /* Set desired height */
+            background-color: #f0f0f0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-family: 'Roboto', sans-serif; /* Set font to Roboto */
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+    </style>
 </head>
 <body>
-
-
-<div class="top-bar">
-    <img class="logo" src="image/Logo.png" alt="LUTONG LIKHA Logo">
-    <h1>LUTONG LIKHA</h1>
-    <div class="search-bar">
-        <input type="search" placeholder="Search for recipes">
+    <div class="top-bar">
+        <img class="logo" src="image/Logo.png" alt="LUTONG LIKHA Logo">
+        <h1>LUTONG LIKHA</h1>
+        <div class="search-bar">
+            <input type="search" placeholder="Search for recipes">
+        </div>
+        <ul class="menu">
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Trending.html">Trending</a></li>
+            <li><a href="Saved.html">Save</a></li>
+            <li><a href="Profile.html">Profile</a></li>
+        </ul>
     </div>
-    <ul class="menu">
-        <li><a href="Home.html">Home</a></li>
-        <li><a href="Trending.html">Trending</a></li>
-        <li><a href="Saved.html">Save</a></li>
-        <li><a href="Profile.html">Profile</a></li>
-    </ul>
-</div>
+
+    <div class="container">
+        <div class="meal-category">Breakfast</div>
+        <div class="meal-category">Lunch</div>
+        <div class="meal-category">Dinner</div>
+        <div class="meal-category">Snack</div>
+    </div>
+</body>
+
