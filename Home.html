@@ -105,7 +105,16 @@
           </p>
         </div>
       </div>
+      <div class="prev-next-buttons">
+        <button type="button" class="prev-button">
+          <i class="fas fa-chevron-left"></i> <!-- Font Awesome icon for a left chevron -->
+        </button>
+        <button type="button" class="next-button">
+          <i class="fas fa-chevron-right"></i> <!-- Font Awesome icon for a right chevron -->
+        </button>
+      </div>
     </div>
+
 
     <div class="spotify-playlists">
       <h2>New Recipes</h2>
@@ -160,6 +169,14 @@
           <h4>Ginataang Mais (Corn in Coconut Milk)</h4>
           <p>Original: Fresh corn kernels, shrimp, coconut milk, shrimp paste, vegetables (okra, string beans)</p>
         </div>
+      </div>
+      <div class="prev-next-buttons">
+        <button type="button" class="prev-button">
+          <i class="fas fa-chevron-left"></i> <!-- Font Awesome icon for a left chevron -->
+        </button>
+        <button type="button" class="next-button">
+          <i class="fas fa-chevron-right"></i> <!-- Font Awesome icon for a right chevron -->
+        </button>
       </div>
     </div>
 
@@ -218,8 +235,14 @@
           </p>
         </div>
       </div>
-
-      <hr>
+      <div class="prev-next-buttons">
+        <button type="button" class="prev-button">
+          <i class="fas fa-chevron-left"></i> <!-- Font Awesome icon for a left chevron -->
+        </button>
+        <button type="button" class="next-button">
+          <i class="fas fa-chevron-right"></i> <!-- Font Awesome icon for a right chevron -->
+        </button>
+      </div>
     </div>
 
     <div class="preview">
@@ -239,5 +262,32 @@
   ></script>
 </body>
 
-</body>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const nextButtons = document.querySelectorAll(".next-button");
+    const prevButtons = document.querySelectorAll(".prev-button");
+    const lists = document.querySelectorAll(".list");
+
+    nextButtons.forEach((nextButton, index) => {
+      nextButton.addEventListener("click", function() {
+        // Scroll the list to the right with smooth animation
+        lists[index].scrollBy({
+          left: 200,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    prevButtons.forEach((prevButton, index) => {
+      prevButton.addEventListener("click", function() {
+        // Scroll the list to the left with smooth animation
+        lists[index].scrollBy({
+          left: -200,
+          behavior: 'smooth'
+        });
+      });
+    });
+  });
+</script>
+
 </html>
