@@ -36,12 +36,16 @@
           <img src="https://firebasestorage.googleapis.com/v0/b/recipe-generator-project-4004a.appspot.com/o/sinigang-baboy-7-1152x1536.jpg?alt=media&token=49d407d7-d2e8-4e97-a185-faaf85bcd4df" />
           <h4>Sinigang na Baboy</h4>
           <p>Original:
-            Pork belly
-            Tamarind
-            Onions, tomatoes, okra, green beans
-            Shrimp paste, fish sauce, salt, pepper
-            </p>
-        </div>
+              Pork belly
+              Tamarind
+              Onions, tomatoes, okra, green beans
+              Shrimp paste, fish sauce, salt, pepper
+          </p>
+          <button type="button" class="save-button" onclick="saveItem('breakfast', 'Sinigang na Baboy',
+           'https://firebasestorage.googleapis.com/v0/b/recipe-generator-project-4004a.appspot.com/o/sinigang-baboy-7-1152x1536.jpg?alt=media&token=49d407d7-d2e8-4e97-a185-faaf85bcd4df',
+            'Pork belly, Tamarind, Onions, tomatoes, okra, green beans, Shrimp paste, fish sauce, salt, pepper')">+
+            </button>
+      </div>
 
         <div class="item">
           <img src="https://firebasestorage.googleapis.com/v0/b/recipe-generator-project-4004a.appspot.com/o/965CFAD2-AFC5-4C88-A221-3438E3E8C90E.jpeg?alt=media&token=f88547bd-3bf5-45b3-876b-9b4f2bae42b0" />
@@ -289,5 +293,25 @@
     });
   });
 </script>
+<script>
+  function saveItem(mealCategory, itemName, itemImage, itemDescription) {
+      // Retrieve saved items from Local Storage
+      const savedItems = JSON.parse(localStorage.getItem('savedItems')) || {};
 
+      // If the meal category doesn't exist, create it
+      if (!savedItems[mealCategory]) {
+          savedItems[mealCategory] = [];
+      }
+
+      // Add the item to the respective meal category
+      savedItems[mealCategory].push({
+          title: itemName,
+          imageSrc: itemImage,
+          description: itemDescription
+      });
+
+      // Store the updated saved items back to Local Storage
+      localStorage.setItem('savedItems', JSON.stringify(savedItems));
+  }
+</script>
 </html>

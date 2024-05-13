@@ -15,10 +15,8 @@
             padding: 20px;
         }
 
-
         .meal-category {
-            width: 24%; /* 4 divs, each with 24% width to accommodate spacing */
-            height: 300px; /* Set desired height */
+            width: 100%;
             background-color: #f0f0f0;
             box-sizing: border-box;
             border: 1px solid #ccc;
@@ -27,8 +25,46 @@
             font-family: 'Roboto', sans-serif; /* Set font to Roboto */
             font-size: 22px;
             font-weight: bold;
+            overflow-y: auto; /* Enable vertical scroll if needed */
         }
 
+        /* Styles for saved items under the Breakfast meal category */
+        .saved-items-container {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start; /* Align items to the start */
+            gap: 10px; /* Adjust the space between saved items */
+        }
+
+        .saved-item {
+            min-width: 140px;
+            width: 160px;
+            padding: 15px;
+            background-color: #FFFFF0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all ease 0.4s;
+            position: relative;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .saved-item img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .saved-item h4 {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .saved-item p {
+            margin-top: 5px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -47,10 +83,56 @@
     </div>
 
     <div class="container">
-        <div class="meal-category">Breakfast</div>
-        <div class="meal-category">Lunch</div>
-        <div class="meal-category">Dinner</div>
-        <div class="meal-category">Snack</div>
+        <div class="meal-category" id="breakfast-meal-category">
+            <h2>Saved Recipes</h2>
+            <div class="saved-items-container">
+                <!-- Saved items under the Breakfast category will be displayed here -->
+            </div>
+        </div>
     </div>
-</body>
 
+    <script>
+        // Function to display saved items under the specified meal category
+        function displaySavedItems(mealCategory) {
+            // Retrieve saved items from Local Storage
+            const savedItems = JSON.parse(localStorage.getItem('savedItems')) || {};
+
+            // Get the saved items container
+            const savedItemsContainer = document.querySelector(`#${mealCategory}-meal-category .saved-items-container`);
+
+            // Clear any existing saved items in the container
+            savedItemsContainer.innerHTML = '';
+
+            // Check if the meal category exists in saved items
+            if (savedItems[mealCategory]) {
+                // Loop through saved items in the specified meal category
+                savedItems[mealCategory].forEach(item => {
+                    // Create elements to display each saved item
+                    const savedItemElement = document.createElement('div');
+                    savedItemElement.classList.add('saved-item');
+
+                    const imageElement = document.createElement('img');
+                    imageElement.src = item.imageSrc;
+                    savedItemElement.appendChild(imageElement);
+
+                    const titleElement = document.createElement('h4');
+                    titleElement.textContent = item.title;
+                    savedItemElement.appendChild(titleElement);
+
+                    const descriptionElement = document.createElement('p');
+                    descriptionElement.textContent = item.description;
+                    savedItemElement.appendChild(descriptionElement);
+
+                    // Append the saved item element to the saved items container
+                    savedItemsContainer.appendChild(savedItemElement);
+                });
+            }
+        }
+
+        // Call the displaySavedItems function for the Breakfast meal category when the page loads
+        window.addEventListener('DOMContentLoaded', function() {
+            displaySavedItems('breakfast');
+        });
+    </script>
+</body>
+</html>
