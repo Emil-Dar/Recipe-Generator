@@ -76,6 +76,46 @@
             margin-top: 5px;
             font-size: 14px;
         }
+        /* Adjusted styles for the minus button */
+        .minus-button {
+            position: absolute; /* Changed to absolute */
+            background-color: #FF6347; /* Adjust button color as needed */
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            bottom: 5px; /* Positioned at the bottom */
+            right: 5px; /* Positioned at the right */
+            transition: background-color 0.3s ease;
+        }
+
+/* Tooltip styles */
+.minus-button::after {
+    content: 'Remove';
+    position: absolute;
+    display: none;
+    background-color: #000;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    bottom: calc(100% + 5px);
+    right: 50%;
+    transform: translateX(50%);
+    white-space: nowrap;
+}
+
+.minus-button:hover {
+    background-color: #D14836; /* Adjust hover color as needed */
+}
+
+.minus-button:hover::after {
+    display: block;
+}
+
     </style>
 </head>
 <body>
@@ -146,6 +186,74 @@
       displaySavedItems('breakfast');
     });
   </script>
-  
+  <script>
+    // Function to display saved items under the specified meal category
+    function displaySavedItems(mealCategory) {
+        // Retrieve saved items from Local Storage
+        const savedItems = JSON.parse(localStorage.getItem('savedItems')) || {};
+
+        // Get the saved items container
+        const savedItemsContainer = document.querySelector(`#${mealCategory}-meal-category .saved-items-container`);
+
+        // Clear any existing saved items in the container
+        savedItemsContainer.innerHTML = '';
+
+        // Check if the meal category exists in saved items
+        if (savedItems[mealCategory]) {
+            // Loop through saved items in the specified meal category
+            savedItems[mealCategory].forEach(item => {
+                // Create elements to display each saved item
+                const savedItemElement = document.createElement('div');
+                savedItemElement.classList.add('saved-item');
+
+                const imageElement = document.createElement('img');
+                imageElement.src = item.imageSrc;
+                savedItemElement.appendChild(imageElement);
+
+                const titleElement = document.createElement('h4');
+                titleElement.textContent = item.title;
+                savedItemElement.appendChild(titleElement);
+
+                const descriptionElement = document.createElement('p');
+                descriptionElement.textContent = item.description;
+                savedItemElement.appendChild(descriptionElement);
+
+                // Create a minus button to remove the saved item
+                const minusButton = document.createElement('button');
+                minusButton.textContent = '-';
+                minusButton.classList.add('minus-button');
+                minusButton.onclick = function() {
+                    removeSavedItem(mealCategory, item.title);
+                    // Remove the saved item element from the DOM
+                    savedItemElement.remove();
+                };
+                savedItemElement.appendChild(minusButton);
+
+                // Append the saved item element to the saved items container
+                savedItemsContainer.appendChild(savedItemElement);
+            });
+        }
+    }
+
+    // Function to remove a saved item
+    function removeSavedItem(mealCategory, itemName) {
+        // Retrieve saved items from Local Storage
+        const savedItems = JSON.parse(localStorage.getItem('savedItems')) || {};
+
+        // Check if the meal category exists in saved items
+        if (savedItems[mealCategory]) {
+            // Filter out the item to be removed
+            savedItems[mealCategory] = savedItems[mealCategory].filter(item => item.title !== itemName);
+
+            // Save the updated savedItems object back to Local Storage
+            localStorage.setItem('savedItems', JSON.stringify(savedItems));
+        }
+    }
+
+    // Call the displaySavedItems function for the Breakfast meal category when the page loads
+    window.addEventListener('DOMContentLoaded', function() {
+        displaySavedItems('breakfast');
+    });
+</script>
 </body>
 </html>

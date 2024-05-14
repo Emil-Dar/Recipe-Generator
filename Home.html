@@ -262,71 +262,73 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const nextButtons = document.querySelectorAll(".next-button");
-      const prevButtons = document.querySelectorAll(".prev-button");
-      const lists = document.querySelectorAll(".list");
-      const items = document.querySelectorAll('.item');
-  
-      nextButtons.forEach((nextButton, index) => {
-        nextButton.addEventListener("click", function() {
-          // Scroll the list to the right with smooth animation
-          lists[index].scrollBy({
-            left: 200,
-            behavior: 'smooth'
-          });
+        const nextButtons = document.querySelectorAll(".next-button");
+        const prevButtons = document.querySelectorAll(".prev-button");
+        const lists = document.querySelectorAll(".list");
+        const items = document.querySelectorAll('.item');
+
+        nextButtons.forEach((nextButton, index) => {
+            nextButton.addEventListener("click", function() {
+                // Scroll the list to the right with smooth animation
+                lists[index].scrollBy({
+                    left: 200,
+                    behavior: 'smooth'
+                });
+            });
         });
-      });
-  
-      prevButtons.forEach((prevButton, index) => {
-        prevButton.addEventListener("click", function() {
-          // Scroll the list to the left with smooth animation
-          lists[index].scrollBy({
-            left: -200,
-            behavior: 'smooth'
-          });
+
+        prevButtons.forEach((prevButton, index) => {
+            prevButton.addEventListener("click", function() {
+                // Scroll the list to the left with smooth animation
+                lists[index].scrollBy({
+                    left: -200,
+                    behavior: 'smooth'
+                });
+            });
         });
-      });
-  
-      // Function to dynamically add save button to each item and handle save functionality
-      items.forEach(item => {
-        const saveButton = document.createElement('button');
-        saveButton.setAttribute('type', 'button');
-        saveButton.classList.add('save-button');
-        saveButton.innerHTML = '+';
-        saveButton.onclick = function() {
-          saveItem('breakfast', item.querySelector('h4').innerText, item.querySelector('img').src, item.querySelector('p').innerText);
-        };
-        item.appendChild(saveButton);
-      });
+
+        // Function to dynamically add save button to each item and handle save functionality
+        items.forEach(item => {
+            const saveButton = document.createElement('button');
+            saveButton.setAttribute('type', 'button');
+            saveButton.classList.add('save-button');
+            saveButton.innerHTML = '+';
+            saveButton.title = 'Add to Favorites'; // Tooltip text
+            saveButton.onclick = function() {
+                saveItem('breakfast', item.querySelector('h4').innerText, item.querySelector('img').src, item.querySelector('p').innerText);
+            };
+            item.appendChild(saveButton);
+        });
     });
-  
+
     // Function to save item
     function saveItem(mealCategory, itemName, itemImage, itemDescription) {
-      // Retrieve saved items from localStorage or initialize an empty object if it doesn't exist
-      const savedItems = JSON.parse(localStorage.getItem('savedItems')) || {};
-  
-      // Create a new item object
-      const newItem = {
-        title: itemName,
-        imageSrc: itemImage,
-        description: itemDescription
-      };
-  
-      // Check if the meal category already exists in savedItems, if not, create an array for it
-      if (!savedItems[mealCategory]) {
-        savedItems[mealCategory] = [];
-      }
-  
-      // Add the new item to the specified meal category
-      savedItems[mealCategory].push(newItem);
-  
-      // Save the updated savedItems object back to localStorage
-      localStorage.setItem('savedItems', JSON.stringify(savedItems));
-  
-      // Optionally, you can display a message to indicate that the item has been saved
-      alert('Recipe saved!');
+        // Retrieve saved items from localStorage or initialize an empty object if it doesn't exist
+        const savedItems = JSON.parse(localStorage.getItem('savedItems')) || {};
+
+        // Create a new item object
+        const newItem = {
+            title: itemName,
+            imageSrc: itemImage,
+            description: itemDescription
+        };
+
+        // Check if the meal category already exists in savedItems, if not, create an array for it
+        if (!savedItems[mealCategory]) {
+            savedItems[mealCategory] = [];
+        }
+
+        // Add the new item to the specified meal category
+        savedItems[mealCategory].push(newItem);
+
+        // Save the updated savedItems object back to localStorage
+        localStorage.setItem('savedItems', JSON.stringify(savedItems));
+
+        // Optionally, you can display a message to indicate that the item has been saved
+        alert('Recipe saved!');
     }
-  </script>
+</script>
+
   
 </body>
 </html>
