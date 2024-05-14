@@ -16,6 +16,7 @@ body {
     padding: 15px;
     background-color: #F5C184;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
 }
 .logo {
     width: 100px;
@@ -63,9 +64,9 @@ body {
 
 
 
-
 .spotify-playlists {
   padding: 20px 40px;
+  margin-top: 80px; /* Adjust this value according to the height of your top bar */
   position: relative;
 }
 
@@ -81,6 +82,7 @@ body {
   padding: 20px; /* Adjust padding as needed */
   cursor: pointer;
 }
+
 
 .next-button {
   right: 40px; /* Adjust as needed */
