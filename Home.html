@@ -26,8 +26,6 @@
 
 
 <div class="main-container">
-
-
     <div class="spotify-playlists">
       <h2>Recommended for You</h2>
 
@@ -41,10 +39,7 @@
               Onions, tomatoes, okra, green beans
               Shrimp paste, fish sauce, salt, pepper
           </p>
-          <button type="button" class="save-button" onclick="saveItem('breakfast', 'Sinigang na Baboy',
-           'https://firebasestorage.googleapis.com/v0/b/recipe-generator-project-4004a.appspot.com/o/sinigang-baboy-7-1152x1536.jpg?alt=media&token=49d407d7-d2e8-4e97-a185-faaf85bcd4df',
-            'Pork belly, Tamarind, Onions, tomatoes, okra, green beans, Shrimp paste, fish sauce, salt, pepper')">+
-            </button>
+          
       </div>
 
         <div class="item">
@@ -312,6 +307,28 @@
 
       // Store the updated saved items back to Local Storage
       localStorage.setItem('savedItems', JSON.stringify(savedItems));
+  }
+</script>
+<script>
+  // Function to dynamically add save button to each item
+  document.addEventListener("DOMContentLoaded", function() {
+      const items = document.querySelectorAll('.item');
+      items.forEach(item => {
+          const saveButton = document.createElement('button');
+          saveButton.setAttribute('type', 'button');
+          saveButton.classList.add('save-button');
+          saveButton.innerHTML = '+';
+          saveButton.onclick = function() {
+              saveItem('breakfast', item.querySelector('h4').innerText, item.querySelector('img').src, item.querySelector('p').innerText);
+          };
+          item.appendChild(saveButton);
+      });
+  });
+
+  // Function to save item
+  function saveItem(mealCategory, itemName, itemImage, itemDescription) {
+      // Your save item logic here
+      console.log('Item saved:', mealCategory, itemName, itemImage, itemDescription);
   }
 </script>
 </html>
