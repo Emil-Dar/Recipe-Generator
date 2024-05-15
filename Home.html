@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LUTONG LIKHA</title>
     <link rel="stylesheet" href="styles.css"> <!-- Linking the external CSS file -->
+    <style>
+      .notification {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        z-index: 1000; /* Ensure the notification appears above other content */
+        font-size: 16px;
+    }
+    </style>
 </head>
 <body>
 
@@ -325,7 +339,18 @@
         localStorage.setItem('savedItems', JSON.stringify(savedItems));
 
         // Optionally, you can display a message to indicate that the item has been saved
-        alert('Recipe saved!');
+        showNotification('Recipe saved!', 3000);
+    }
+    function showNotification(message, duration) {
+        const notification = document.createElement('div');
+        notification.textContent = message;
+        notification.classList.add('notification');
+        document.body.appendChild(notification);
+
+        // Automatically remove the notification after the specified duration
+        setTimeout(() => {
+            notification.remove();
+        }, duration);
     }
 </script>
 

@@ -92,29 +92,29 @@
             transition: background-color 0.3s ease;
         }
 
-/* Tooltip styles */
-.minus-button::after {
-    content: 'Remove';
-    position: absolute;
-    display: none;
-    background-color: #000;
-    color: #fff;
-    padding: 5px;
-    border-radius: 5px;
-    font-size: 12px;
-    bottom: calc(100% + 5px);
-    right: 50%;
-    transform: translateX(50%);
-    white-space: nowrap;
-}
+        /* Tooltip styles */
+        .minus-button::after {
+            content: 'Remove';
+            position: absolute;
+            display: none;
+            background-color: #000;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            bottom: calc(100% + 5px);
+            right: 50%;
+            transform: translateX(50%);
+            white-space: nowrap;
+        }
 
-.minus-button:hover {
-    background-color: #D14836; /* Adjust hover color as needed */
-}
+        .minus-button:hover {
+            background-color: #D14836; /* Adjust hover color as needed */
+        }
 
-.minus-button:hover::after {
-    display: block;
-}
+        .minus-button:hover::after {
+            display: block;
+        }
 
     </style>
 </head>
@@ -255,5 +255,7 @@
         displaySavedItems('breakfast');
     });
 </script>
+
+
 </body>
 </html>

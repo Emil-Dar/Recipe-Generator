@@ -5,6 +5,133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LUTONG LIKHA</title>
     <link rel="stylesheet" href="styles.css"> <!-- Linking the external CSS file -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+
+    <style>
+        .container {
+            margin-top: 1%; /* Adjust the margin-top value as needed */
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .top-bar {
+            position: fixed; /* Make the top bar fixed */
+            top: 0; /* Stick it to the top of the viewport */
+            left: 0; /* Align it to the left side */
+            width: 100%; /* Make it full width */
+            background-color: #F5C184; /* Adjust background color as needed */
+            z-index: 1000; /* Ensure it's above other content */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .meal-category {
+            width: 100%;
+            background-color: #f0f0f0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-family: 'Roboto', sans-serif; /* Set font to Roboto */
+            font-size: 22px;
+            font-weight: bold;
+            overflow-y: auto; /* Enable vertical scroll if needed */
+            margin-top: 70px; /* Adjust margin-top to make space for the fixed top bar */
+        }
+
+        .recipe-category {
+            margin-top: 50px; /* Adjust margin top as needed */
+            background-color: #ffffff; /* Background color for the recipe category container */
+            border-radius: 8px; /* Add border radius for rounded corners */
+            padding: 20px; /* Padding around the recipe category content */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+            max-height: calc(100vh - 200px); /* Set a maximum height */
+            overflow-y: auto;
+        }
+
+        .recipe-category h2 {
+            font-size: 24px; /* Adjust the font size of the category title */
+            margin-bottom: 15px; /* Add spacing between the title and the content */
+        }
+
+        /* Styles for saved items under the Breakfast meal category */
+        .saved-items-container {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 10px; /* Adjust the space between saved items */
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .saved-item {
+            min-width: 140px;
+            width: 155px;
+            padding: 15px;
+            background-color: #FFFFF0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all ease 0.4s;
+            position: relative;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .saved-item img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .saved-item h4 {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .saved-item p {
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        /* Adjusted styles for the minus button */
+        .minus-button {
+            position: absolute; /* Changed to absolute */
+            background-color: #FF6347; /* Adjust button color as needed */
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            bottom: 5px; /* Positioned at the bottom */
+            right: 5px; /* Positioned at the right */
+            transition: background-color 0.3s ease;
+        }
+
+        /* Tooltip styles */
+        .minus-button::after {
+            content: 'Remove';
+            position: absolute;
+            display: none;
+            background-color: #000;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            bottom: calc(100% + 5px);
+            right: 50%;
+            transform: translateX(50%);
+            white-space: nowrap;
+        }
+
+        .minus-button:hover {
+            background-color: #D14836; /* Adjust hover color as needed */
+        }
+
+        .minus-button:hover::after {
+            display: block;
+        }
+
+    </style>
 </head>
 <body>
     <div class="top-bar">
@@ -21,37 +148,56 @@
         </ul>
     </div>
 
-    <div class="top-recipes">
-        <h1>Top Recipes</h1>
-    
-        <div class="recipe-category">
+    <div class="container">
+        <div class="recipe-category" id="breakfast-meal-category">
             <h2>Top Recipes of the Day</h2>
-            <ul>
-                <li><a href="#">Recipe 1</a></li>
-                <li><a href="#">Recipe 2</a></li>
-                <li><a href="#">Recipe 3</a></li>
-                <!-- Add more recipes as needed -->
-            </ul>
-        </div>
-    
-        <div class="recipe-category">
-            <h2>Top Recipes of the Week</h2>
-            <ul>
-                <li><a href="#">Recipe A</a></li>
-                <li><a href="#">Recipe B</a></li>
-                <li><a href="#">Recipe C</a></li>
-                <!-- Add more recipes as needed -->
-            </ul>
-        </div>
-    
-        <div class="recipe-category">
-            <h2>Top Recipes of the Month</h2>
-            <ul>
-                <li><a href="#">Recipe X</a></li>
-                <li><a href="#">Recipe Y</a></li>
-                <li><a href="#">Recipe Z</a></li>
-                <!-- Add more recipes as needed -->
-            </ul>
+            <div class="saved-items-container">
+                <!-- Saved items under the Breakfast category will be displayed here -->
+            </div>
         </div>
     </div>
+
+<!-- Add this script at the end of the <body> section -->
+    <script>
+        // Function to display saved items under the specified meal category
+        function displaySavedItems(mealCategory) {
+            // Retrieve saved items from Local Storage
+            const savedItems = JSON.parse(localStorage.getItem('savedItems')) || {};
+
+            // Get the saved items container
+            const savedItemsContainer = document.querySelector(`#${mealCategory}-meal-category .saved-items-container`);
+
+            // Clear any existing saved items in the container
+            savedItemsContainer.innerHTML = '';
+
+            // Check if the meal category exists in saved items
+            if (savedItems[mealCategory]) {
+                // Loop through saved items in the specified meal category
+                savedItems[mealCategory].forEach(item => {
+                    // Create elements to display each saved item
+                    const savedItemElement = document.createElement('div');
+                    savedItemElement.classList.add('saved-item');
+
+                    const imageElement = document.createElement('img');
+                    imageElement.src = item.imageSrc;
+                    savedItemElement.appendChild(imageElement);
+
+                    const titleElement = document.createElement('h4');
+                    titleElement.textContent = item.title;
+                    savedItemElement.appendChild(titleElement);
+
+                    // Append the saved item element to the saved items container
+                    savedItemsContainer.appendChild(savedItemElement);
+                });
+            }
+        }
+
+        // Call the displaySavedItems function for the Breakfast meal category when the page loads
+        window.addEventListener('DOMContentLoaded', function() {
+            displaySavedItems('breakfast');
+        });
+    </script>
+    
+
 </body>
+</html>
