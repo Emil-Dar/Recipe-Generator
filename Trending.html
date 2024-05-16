@@ -163,40 +163,57 @@
         function displaySavedItems(mealCategory) {
             // Retrieve saved items from Local Storage
             const savedItems = JSON.parse(localStorage.getItem('savedItems')) || {};
-
+    
             // Get the saved items container
             const savedItemsContainer = document.querySelector(`#${mealCategory}-meal-category .saved-items-container`);
-
+    
             // Clear any existing saved items in the container
             savedItemsContainer.innerHTML = '';
-
+    
             // Check if the meal category exists in saved items
             if (savedItems[mealCategory]) {
+                // Create an object to store item counts
+                const itemCounts = {};
+    
                 // Loop through saved items in the specified meal category
                 savedItems[mealCategory].forEach(item => {
-                    // Create elements to display each saved item
+                    // Increment count or set count to 1 if not already present
+                    itemCounts[item.title] = (itemCounts[item.title] || 0) + 1;
+                });
+    
+                // Get unique item titles sorted by their counts in descending order
+                const uniqueTitles = Object.keys(itemCounts).sort((a, b) => itemCounts[b] - itemCounts[a]);
+    
+                // Loop through the unique items and display them
+                uniqueTitles.forEach(title => {
+                    // Create elements to display each unique saved item
                     const savedItemElement = document.createElement('div');
                     savedItemElement.classList.add('saved-item');
-
+    
                     const imageElement = document.createElement('img');
-                    imageElement.src = item.imageSrc;
+                    imageElement.src = savedItems[mealCategory].find(item => item.title === title).imageSrc;
                     savedItemElement.appendChild(imageElement);
-
+    
                     const titleElement = document.createElement('h4');
-                    titleElement.textContent = item.title;
+                    titleElement.textContent = title;
                     savedItemElement.appendChild(titleElement);
-
+    
+                    const countElement = document.createElement('p');
+                    countElement.textContent = `Saved: ${itemCounts[title]}`;
+                    savedItemElement.appendChild(countElement);
+    
                     // Append the saved item element to the saved items container
                     savedItemsContainer.appendChild(savedItemElement);
                 });
             }
         }
-
+    
         // Call the displaySavedItems function for the Breakfast meal category when the page loads
         window.addEventListener('DOMContentLoaded', function() {
             displaySavedItems('breakfast');
         });
     </script>
+    
     
 
 </body>

@@ -8,10 +8,20 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
 
     <style>
+        .top-bar {
+            position: fixed; /* Make the top bar fixed */
+            top: 0; /* Stick it to the top of the viewport */
+            left: 0; /* Align it to the left side */
+            width: 100%; /* Make it full width */
+            background-color: #F5C184; /* Adjust background color as needed */
+            z-index: 1000; /* Ensure it's above other content */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            padding-top: 3%; /* Initial padding-top */
         }
         header {
             background-color: #000;
@@ -61,7 +71,6 @@
     
         /* CSS to align profile info and buttons */
         .container {
-            margin-top: 7.7%; /* Adjust margin-top as needed */
             padding: 20px;
             display: flex;
             justify-content: flex-start;
@@ -243,6 +252,18 @@
                 }
             });
         }
+
+        // Dynamically adjust container padding based on top bar height
+        window.addEventListener('resize', function() {
+            const topBarHeight = document.querySelector('.top-bar').offsetHeight;
+            document.querySelector('.container').style.paddingTop = `${topBarHeight}px`;
+        });
+
+        // Initial adjustment on page load
+        window.addEventListener('load', function() {
+            const topBarHeight = document.querySelector('.top-bar').offsetHeight;
+            document.querySelector('.container').style.paddingTop = `${topBarHeight}px`;
+        });
     </script>
 </body>
 </html>

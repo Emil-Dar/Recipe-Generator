@@ -255,7 +255,28 @@
         displaySavedItems('breakfast');
     });
 </script>
+<script>
+    // Function to remove a saved item
+    function removeSavedItem(mealCategory, itemName, page) {
+        // Retrieve saved items from Local Storage
+        const savedItems = JSON.parse(localStorage.getItem('savedItems')) || {};
 
+        // Check if the meal category exists in saved items
+        if (savedItems[mealCategory]) {
+            // Filter out the item to be removed
+            savedItems[mealCategory] = savedItems[mealCategory].filter(item => item.title !== itemName);
+
+            // Save the updated savedItems object back to Local Storage
+            localStorage.setItem('savedItems', JSON.stringify(savedItems));
+
+            // Check if the removal is initiated from Trending.html
+            if (page === 'Trending') {
+                // If so, also update the display on the Trending.html page
+                displaySavedItems(mealCategory); // Assuming you have a function to display saved items in Trending.html
+            }
+        }
+    }
+</script>
 
 </body>
 </html>
