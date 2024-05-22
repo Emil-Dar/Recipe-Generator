@@ -464,31 +464,37 @@
 
         // Function to create a new post
         function createPost() {
-            var title = document.getElementById('postTitle').value;
-            var shortDescription = document.getElementById('shortDescription').value;
-            var ingredients = document.getElementById('postIngredients').value;
+            var title = document.getElementById('postTitle').value.trim();
+            var shortDescription = document.getElementById('shortDescription').value.trim();
+            var ingredients = document.getElementById('postIngredients').value.trim();
 
+            // Get instructions
             var instructionsContainer = document.getElementById('instructionsContainer');
             var instructionInputs = instructionsContainer.getElementsByClassName('instructionInput');
             var instructions = [];
             for (var i = 0; i < instructionInputs.length; i++) {
                 if (instructionInputs[i].value.trim() !== '') {
-                    instructions.push(instructionInputs[i].value);
+                    instructions.push(instructionInputs[i].value.trim());
                 }
             }
 
+            // Get photo
             var photo = document.getElementById('previewImage').src;
 
-            // Create a new post element
+            // Check for missing fields
+            if (!title || !shortDescription || !ingredients || instructions.length === 0 || !photo) {
+                alert('Please fill in all fields and upload a photo.');
+                return;
+            }
+
+            // Create the post
             var post = document.createElement('div');
             post.className = 'saved-item';
 
             // Add photo
-            if (photo) {
-                var postImage = document.createElement('img');
-                postImage.src = photo;
-                post.appendChild(postImage);
-            }
+            var postImage = document.createElement('img');
+            postImage.src = photo;
+            post.appendChild(postImage);
 
             // Add title
             var postTitle = document.createElement('h4');
@@ -512,10 +518,13 @@
 
             // Append the new post to the posts container
             document.getElementById('posts-container').appendChild(post);
+            addDeleteButton(post);
 
             // Close the modal
+            var modal = document.getElementById("myModal");
             modal.style.display = "none";
 
+            // Save the post to local storage
             savePostToLocalStorage();
         }
 
@@ -570,6 +579,7 @@
             // Append the new draft to the drafts container
             var draftsContainer = document.getElementById('drafts-content');
             draftsContainer.appendChild(draft);
+            addDeleteButton(draft);
 
             // Close the modal
             modal.style.display = "none";
@@ -609,22 +619,37 @@
             }
         }
 
-        // Function to delete a saved item
-        function deleteSavedItem(event) {
-            // Get the parent element of the delete button (the saved item)
-            var savedItem = event.target.closest('.saved-item');
-            // Remove the saved item from the DOM
-            savedItem.remove();
-            // After deleting the saved item, save the updated list to local storage
-            savePostsToLocalStorage(); // Assuming you want to update the list of posts in local storage
+        // Function to add a delete button to a saved item
+        function addDeleteButton(savedItem) {
+            // Create delete button
+            var deleteButton = document.createElement('button');
+            deleteButton.className = 'delete-button';
+            deleteButton.textContent = 'Delete';
+
+            // Add click event listener to delete button
+            deleteButton.addEventListener('click', function(event) {
+                // Show confirmation dialog before deleting
+                var confirmDelete = confirm("Are you sure you want to delete this item?");
+                if (confirmDelete) {
+                    // Delete the saved item when confirmed
+                    savedItem.remove();
+                    // Save the updated list to local storage
+                    savePostToLocalStorage(); // Assuming you want to update the list of posts in local storage
+                    saveDraftToLocalStorage(); // Assuming you want to update the list of drafts in local storage
+                }
+            });
+
+            // Append delete button to the saved item
+            savedItem.appendChild(deleteButton);
         }
-
-        // Call these functions when the page loads
-        window.addEventListener('load', function() {
-            loadPostsFromLocalStorage();
-            loadDraftsFromLocalStorage();
-        });
-
+                // Call these functions when the page loads
+                window.addEventListener('load', function() {
+                    loadPostsFromLocalStorage();
+                    loadDraftsFromLocalStorage();
+                    addDeleteButtonsToSavedItems();
+                });
+ 
     </script>
+    
 </body>
 </html>
