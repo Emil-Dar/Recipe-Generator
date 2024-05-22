@@ -21,7 +21,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            padding-top: 3%; /* Initial padding-top */
+            padding-top: 10%; /* Initial padding-top */
         }
         header {
             background-color: #000;
@@ -73,14 +73,15 @@
         .container {
             padding: 20px;
             display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
+            flex-direction: column; /* Align items vertically */
+            justify-content: flex-start; /* Align items to the start */
+            align-items: center; /* Align items to the start */
         }
+
     
         .profile-info {
             padding: 20px;
             width: calc(33.33% - 40px); /* One-third of the screen width */
-            border-right: 1px solid black;
         }
     
         .profile-picture {
@@ -117,16 +118,19 @@
         }
     
         .buttons-container {
-            width: calc(66.66% - 40px); /* Two-thirds of the screen width */
+            width: 100%; /* Set the width to 100% */
             padding: 20px;
             display: flex;
             justify-content: space-between; /* Space between buttons */
-            align-items: flex-start;
+            flex-direction: row; /* Change to row for horizontal alignment */
+            align-items: center; /* Center items vertically */
             margin-bottom: 20px; /* Add margin to create space between buttons and content */
+            border: 1px solid black;
         }
 
         .post-button,
         .drafts-button {
+            width: calc(50% - 10px); /* Share 50% of the width each with 10px gap */
             padding: 10px 20px;
             background-color: transparent; /* Set background color to transparent */
             border: none;
@@ -135,7 +139,7 @@
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
-            margin-right: 30px; /* Increased margin-right for more space */
+            margin-right: 0; /* Remove margin-right */
             cursor: pointer;
             position: relative;
             font-family: 'Roboto', sans-serif;
@@ -170,7 +174,121 @@
             display: block;
         }
 
+        .post-drafts-container {
+            display: flex;
+            flex-direction: column; /* Stack content vertically */
+            align-items: flex-start; /* Align content to the start (left side) */
+            width: 100%; /* Set width to 100% */
+        }
+        .add-button {
+            position: fixed; /* Fixed position */
+            bottom: 20px; /* Adjust the distance from the bottom */
+            right: 20px; /* Adjust the distance from the right */
+            z-index: 1000;
+        }
 
+        .add-post-button {
+            border-radius: 50%; /* Make the button circular */
+            width: 60px; /* Adjust width to make it circular */
+            height: 60px; /* Adjust height to make it circular */
+            font-size: 30px;
+            line-height: 60px; /* Center the text vertically */
+            background-color: #b98c53;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+            border: none;
+        }
+
+        .add-post-button:hover {
+            background-color: #a2723a;;
+        }
+
+        
+        .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1000; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        padding-top: 100px; /* Center and add padding */
+        }
+
+        .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 40%;
+        }
+
+        .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            width: 45%; /* Adjust the width as needed */
+        }
+
+        .saved-items-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start; /* Align items to the start */
+            gap: 5px; /* Adjust the space between saved items */
+        }
+
+        .saved-item {
+            min-width: 0; /* Reset the minimum width */
+            width: calc(22% - 5px); /* Set width to 20% of the container width minus the gap */
+            max-width: calc(22% - 5px); /* Ensure maximum width is 20% minus the gap */
+            padding: 15px;
+            background-color: #FFFFF0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all ease 0.4s;
+            position: relative;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+
+        .saved-item img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .saved-item h4 {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .saved-item p {
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        
     </style>
     
 </head>
@@ -191,44 +309,63 @@
 
     <div class="container">
         <div class="profile-info">
-            <img src="image\profile_pic.jpg" alt="Profile Picture" class="profile-picture">
+            <img src="image/profile_pic.jpg" alt="Profile Picture" class="profile-picture">
             <div class="username">Username</div>
             <div class="bio">Bio goes here</div>
             <div class="stats">
                 <div class="stat-item">
                     <div class="stat-label">Followers</div>
-                    <div class="stat-value">100k</div>
+                    <div class="stat-value">---</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-label">Following</div>
-                    <div class="stat-value">200</div>
+                    <div class="stat-value">---</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-label">Likes</div>
-                    <div class="stat-value">500k</div>
+                    <div class="stat-value">---</div>
                 </div>
             </div>
         </div>
         <div class="buttons-container">
             <button class="post-button active" onclick="toggleButton(this)">Posts<span class="button-underline"></span></button>
             <button class="drafts-button" onclick="toggleButton(this)">Drafts<span class="button-underline"></span></button>
-            <!-- Content for Posts -->
-        <div id="post-content" class="content active">
-            <!-- Add content for Posts here -->
-            <h2>Posts Content</h2>
-            <p>Content for Posts goes here...</p>
+            
         </div>
-    
-        <!-- Content for Drafts -->
-        <div id="drafts-content" class="content">
-            <!-- Add content for Drafts here -->
-            <h2>Drafts Content</h2>
-            <p>Content for Drafts goes here...</p>
-        </div>
-        </div>
+        <div class="post-drafts-container">
+            <div id="post-content" class="content active">
+                <div id="posts-container" class="saved-items-container"></div> <!-- Container for the created posts -->
+            </div>
         
+            <!-- Content for Drafts -->
+            <div id="drafts-content" class="content">
+                
+            </div>
+        </div>
+        <div class="add-button">
+            <button class="add-post-button" onclick="openModal()">+</button>
+        </div>
     </div>
-    
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create Post</h2>
+            <input type="file" accept="image/*" id="photoInput" onchange="previewPhoto(event)">
+            <img src="#" alt="Preview Image" id="previewImage" style="display:none; max-width: 100%; max-height: 200px; margin-top: 10px;">
+            <input type="text" placeholder="Enter title..." id="postTitle" style="display:block; width:100%; margin-top: 10px;">
+            <textarea rows="2" cols="50" placeholder="Enter short description..." id="shortDescription" style="display:block; width:100%; margin-top: 10px;"></textarea>
+            <textarea rows="4" cols="50" placeholder="Enter ingredients..." id="postIngredients" style="display:block; width:100%; margin-top: 10px;"></textarea>
+            <div id="instructionsContainer" style="display:block; width:100%; margin-top: 10px;">
+                <input type="text" placeholder="1. Enter instruction..." class="instructionInput" oninput="addOrRemoveInstructionInput(event)">
+            </div>
+            <div class="button-container">
+                <button class="create-post-button" onclick="createPost()">Create Post</button>
+                <button class="save-draft-button" onclick="saveDraft()">Save in Drafts</button>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2024 Lutong Likha</p>
     </footer>
@@ -253,17 +390,241 @@
             });
         }
 
-        // Dynamically adjust container padding based on top bar height
-        window.addEventListener('resize', function() {
-            const topBarHeight = document.querySelector('.top-bar').offsetHeight;
-            document.querySelector('.container').style.paddingTop = `${topBarHeight}px`;
+        function openModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "block";
+        }
+
+        // Function to preview selected photo
+        function previewPhoto(event) {
+            var preview = document.getElementById('previewImage');
+            var file = event.target.files[0];
+            var reader = new FileReader();
+        
+            reader.onloadend = function () {
+                preview.src = reader.result;
+                preview.style.display = 'block';
+            }
+        
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = '';
+                preview.style.display = 'none';
+            }
+        }
+
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Function to add or remove instruction input fields dynamically
+        function addOrRemoveInstructionInput(event) {
+            var container = document.getElementById('instructionsContainer');
+            var inputFields = container.getElementsByClassName('instructionInput');
+            var currentInput = event.target;
+
+            // Add a new input field if the last input is not empty
+            if (inputFields[inputFields.length - 1] === currentInput && currentInput.value.trim() !== '') {
+                var newInput = document.createElement('input');
+                newInput.type = 'text';
+                newInput.placeholder = (inputFields.length + 1) + '. Enter instruction...';
+                newInput.className = 'instructionInput';
+                newInput.style.display = 'block';
+                newInput.style.width = '100%';
+                newInput.style.marginTop = '10px';
+                newInput.oninput = addOrRemoveInstructionInput;
+
+                container.appendChild(newInput);
+            }
+
+            // Remove trailing empty input fields
+            for (var i = inputFields.length - 1; i > 0; i--) {
+                if (inputFields[i].value.trim() === '' && inputFields[i - 1].value.trim() === '') {
+                    container.removeChild(inputFields[i]);
+                } else {
+                    break;
+                }
+            }
+        }
+
+        // Function to create a new post
+        function createPost() {
+            var title = document.getElementById('postTitle').value;
+            var shortDescription = document.getElementById('shortDescription').value;
+            var ingredients = document.getElementById('postIngredients').value;
+
+            var instructionsContainer = document.getElementById('instructionsContainer');
+            var instructionInputs = instructionsContainer.getElementsByClassName('instructionInput');
+            var instructions = [];
+            for (var i = 0; i < instructionInputs.length; i++) {
+                if (instructionInputs[i].value.trim() !== '') {
+                    instructions.push(instructionInputs[i].value);
+                }
+            }
+
+            var photo = document.getElementById('previewImage').src;
+
+            // Create a new post element
+            var post = document.createElement('div');
+            post.className = 'saved-item';
+
+            // Add photo
+            if (photo) {
+                var postImage = document.createElement('img');
+                postImage.src = photo;
+                post.appendChild(postImage);
+            }
+
+            // Add title
+            var postTitle = document.createElement('h4');
+            postTitle.textContent = title;
+            post.appendChild(postTitle);
+
+            // Add short description
+            var postDescription = document.createElement('p');
+            postDescription.textContent = shortDescription;
+            post.appendChild(postDescription);
+
+            // Add ingredients
+            var postIngredients = document.createElement('p');
+            postIngredients.textContent = 'Ingredients: ' + ingredients;
+            post.appendChild(postIngredients);
+
+            // Add instructions
+            var postInstructions = document.createElement('p');
+            postInstructions.innerHTML = 'Instructions:<br>' + instructions.map((step, index) => `${index + 1}. ${step}`).join('<br>');
+            post.appendChild(postInstructions);
+
+            // Append the new post to the posts container
+            document.getElementById('posts-container').appendChild(post);
+
+            // Close the modal
+            modal.style.display = "none";
+
+            savePostToLocalStorage();
+        }
+
+        // Function to save a draft
+        function saveDraft() {
+            var title = document.getElementById('postTitle').value;
+            var shortDescription = document.getElementById('shortDescription').value;
+            var ingredients = document.getElementById('postIngredients').value;
+
+            var instructionsContainer = document.getElementById('instructionsContainer');
+            var instructionInputs = instructionsContainer.getElementsByClassName('instructionInput');
+            var instructions = [];
+            for (var i = 0; i < instructionInputs.length; i++) {
+                if (instructionInputs[i].value.trim() !== '') {
+                    instructions.push(instructionInputs[i].value);
+                }
+            }
+
+            var photo = document.getElementById('previewImage').src;
+
+            // Create a new draft element
+            var draft = document.createElement('div');
+            draft.className = 'saved-item';
+
+            // Add photo
+            if (photo) {
+                var draftImage = document.createElement('img');
+                draftImage.src = photo;
+                draft.appendChild(draftImage);
+            }
+
+            // Add title
+            var draftTitle = document.createElement('h4');
+            draftTitle.textContent = title;
+            draft.appendChild(draftTitle);
+
+            // Add short description
+            var draftDescription = document.createElement('p');
+            draftDescription.textContent = shortDescription;
+            draft.appendChild(draftDescription);
+
+            // Add ingredients
+            var draftIngredients = document.createElement('p');
+            draftIngredients.textContent = 'Ingredients: ' + ingredients;
+            draft.appendChild(draftIngredients);
+
+            // Add instructions
+            var draftInstructions = document.createElement('p');
+            draftInstructions.innerHTML = 'Instructions:<br>' + instructions.map((step, index) => `${index + 1}. ${step}`).join('<br>');
+            draft.appendChild(draftInstructions);
+
+            // Append the new draft to the drafts container
+            var draftsContainer = document.getElementById('drafts-content');
+            draftsContainer.appendChild(draft);
+
+            // Close the modal
+            modal.style.display = "none";
+
+            savePostToLocalStorage();
+        }
+
+        // Function to save a post to local storage
+        function savePostToLocalStorage() {
+            var postsContainer = document.getElementById('posts-container');
+            var postsHTML = postsContainer.innerHTML;
+            localStorage.setItem('posts', postsHTML);
+        }
+
+        // Function to save a draft to local storage
+        function saveDraftToLocalStorage() {
+            var draftsContainer = document.getElementById('drafts-content');
+            var draftsHTML = draftsContainer.innerHTML;
+            localStorage.setItem('drafts', draftsHTML);
+        }
+
+        // Function to load posts from local storage
+        function loadPostsFromLocalStorage() {
+            var postsContainer = document.getElementById('posts-container');
+            var postsHTML = localStorage.getItem('posts');
+            if (postsHTML) {
+                postsContainer.innerHTML = postsHTML;
+            }
+        }
+
+        // Function to load drafts from local storage
+        function loadDraftsFromLocalStorage() {
+            var draftsContainer = document.getElementById('drafts-content');
+            var draftsHTML = localStorage.getItem('drafts');
+            if (draftsHTML) {
+                draftsContainer.innerHTML = draftsHTML;
+            }
+        }
+
+        // Function to delete a saved item
+        function deleteSavedItem(event) {
+            // Get the parent element of the delete button (the saved item)
+            var savedItem = event.target.closest('.saved-item');
+            // Remove the saved item from the DOM
+            savedItem.remove();
+            // After deleting the saved item, save the updated list to local storage
+            savePostsToLocalStorage(); // Assuming you want to update the list of posts in local storage
+        }
+
+        // Call these functions when the page loads
+        window.addEventListener('load', function() {
+            loadPostsFromLocalStorage();
+            loadDraftsFromLocalStorage();
         });
 
-        // Initial adjustment on page load
-        window.addEventListener('load', function() {
-            const topBarHeight = document.querySelector('.top-bar').offsetHeight;
-            document.querySelector('.container').style.paddingTop = `${topBarHeight}px`;
-        });
     </script>
 </body>
 </html>
