@@ -57,6 +57,13 @@
         .submit-btn:hover {
             background: #4cae4c;
         }
+        .results {
+            margin-top: 20px;
+            padding: 10px;
+            background: #fff;
+            box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -65,340 +72,237 @@
         <form id="ingredientsForm">
             <div class="checkbox-grid">
                 <div class="item">
-                    <input type="checkbox" id="Achuete oil">
-                    <label for="Achuete oil">Achuete oil</label>
+                    <input type="checkbox" id="Achuete_oil" name="Achuete oil">
+                    <label for="Achuete_oil">Achuete oil</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="All-purpose cream">
-                    <label for="All-purpose cream">All-purpose cream</label>
+                    <input type="checkbox" id="All_purpose_cream" name="All-purpose cream">
+                    <label for="All_purpose_cream">All-purpose cream</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Alugbati">
+                    <input type="checkbox" id="Alugbati" name="Alugbati">
                     <label for="Alugbati">Alugbati</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Ampalaya">
+                    <input type="checkbox" id="Ampalaya" name="Ampalaya">
                     <label for="Ampalaya">Ampalaya</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Arnibal">
+                    <input type="checkbox" id="Arnibal" name="Arnibal">
                     <label for="Arnibal">Arnibal</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Bangus">
+                    <input type="checkbox" id="Bangus" name="Bangus">
                     <label for="Bangus">Bangus</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Banana blossom">
-                    <label for="Banana blossom">Banana blossom</label>
+                    <input type="checkbox" id="Banana_blossom" name="Banana blossom">
+                    <label for="Banana_blossom">Banana blossom</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Bay leaves">
-                    <label for="Bay leaves">Bay leaves</label>
+                    <input type="checkbox" id="Bay_leaves" name="Bay leaves">
+                    <label for="Bay_leaves">Bay leaves</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Bell peppers">
-                    <label for="Bell peppers">Bell peppers</label>
+                    <input type="checkbox" id="Bell_peppers" name="Bell peppers">
+                    <label for="Bell_peppers">Bell peppers</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Bihon noodles">
-                    <label for="Bihon noodles">Bihon noodles</label>
+                    <input type="checkbox" id="Bihon_noodles" name="Bihon noodles">
+                    <label for="Bihon_noodles">Bihon noodles</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Brown sugar">
-                    <label for="Brown sugar">Brown sugar</label>
+                    <input type="checkbox" id="Brown_sugar" name="Brown sugar">
+                    <label for="Brown_sugar">Brown sugar</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Buko">
+                    <input type="checkbox" id="Buko" name="Buko">
                     <label for="Buko">Buko</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Cabbage">
+                    <input type="checkbox" id="Cabbage" name="Cabbage">
                     <label for="Cabbage">Cabbage</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Calamansi">
+                    <input type="checkbox" id="Calamansi" name="Calamansi">
                     <label for="Calamansi">Calamansi</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Canned Sardines">
-                    <label for="Canned Sardines">Canned Sardines</label>
+                    <input type="checkbox" id="Canned_Sardines" name="Canned Sardines">
+                    <label for="Canned_Sardines">Canned Sardines</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Carrots">
+                    <input type="checkbox" id="Carrots" name="Carrots">
                     <label for="Carrots">Carrots</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Chayote">
+                    <input type="checkbox" id="Chayote" name="Chayote">
                     <label for="Chayote">Chayote</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Chicken cuts">
-                    <label for="Chicken cuts">Chicken cuts</label>
+                    <input type="checkbox" id="Chicken_cuts" name="Chicken cuts">
+                    <label for="Chicken_cuts">Chicken cuts</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Chilies">
+                    <input type="checkbox" id="Chilies" name="Chilies">
                     <label for="Chilies">Chilies</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Cocoa powder">
-                    <label for="Cocoa powder">Cocoa powder</label>
+                    <input type="checkbox" id="Cocoa_powder" name="Cocoa powder">
+                    <label for="Cocoa_powder">Cocoa powder</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Coconut amino">
-                    <label for="Coconut amino">Coconut amino</label>
+                    <input type="checkbox" id="Coconut_amino" name="Coconut amino">
+                    <label for="Coconut_amino">Coconut amino</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Coconut milk">
-                    <label for="Coconut milk">Coconut milk</label>
+                    <input type="checkbox" id="Coconut_milk" name="Coconut milk">
+                    <label for="Coconut_milk">Coconut milk</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Condensed milk">
-                    <label for="Condensed milk">Condensed milk</label>
+                    <input type="checkbox" id="Condensed_milk" name="Condensed milk">
+                    <label for="Condensed_milk">Condensed milk</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Corn kernels">
-                    <label for="Corn kernels">Corn kernels</label>
+                    <input type="checkbox" id="Corn_kernels" name="Corn kernels">
+                    <label for="Corn_kernels">Corn kernels</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Egg">
+                    <input type="checkbox" id="Egg" name="Egg">
                     <label for="Egg">Egg</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Egg noodles">
-                    <label for="Egg noodles">Egg noodles</label>
+                    <input type="checkbox" id="Egg_noodles" name="Egg noodles">
+                    <label for="Egg_noodles">Egg noodles</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Eggplant">
+                    <input type="checkbox" id="Eggplant" name="Eggplant">
                     <label for="Eggplant">Eggplant</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Evaporated milk">
-                    <label for="Evaporated milk">Evaporated milk</label>
+                    <input type="checkbox" id="Evaporated_milk" name="Evaporated milk">
+                    <label for="Evaporated_milk">Evaporated milk</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Fish sauce">
-                    <label for="Fish sauce">Fish sauce</label>
+                    <input type="checkbox" id="Fish_sauce" name="Fish sauce">
+                    <label for="Fish_sauce">Fish sauce</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Flour">
+                    <input type="checkbox" id="Flour" name="Flour">
                     <label for="Flour">Flour</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Garlic">
+                    <input type="checkbox" id="Garlic" name="Garlic">
                     <label for="Garlic">Garlic</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Ginger">
+                    <input type="checkbox" id="Ginger" name="Ginger">
                     <label for="Ginger">Ginger</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Glutinous rice">
-                    <label for="Glutinous rice">Glutinous rice</label>
+                    <input type="checkbox" id="Glutinous_rice" name="Glutinous rice">
+                    <label for="Glutinous_rice">Glutinous rice</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Green beans">
-                    <label for="Green beans">Green beans</label>
+                    <input type="checkbox" id="Hotdogs" name="Hotdogs">
+                    <label for="Hotdogs">Hotdogs</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Green mangoes">
-                    <label for="Green mangoes">Green mangoes</label>
+                    <input type="checkbox" id="Longganisa" name="Longganisa">
+                    <label for="Longganisa">Longganisa</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Grated coconut meat">
-                    <label for="Grated coconut meat">Grated coconut meat</label>
+                    <input type="checkbox" id="Malunggay" name="Malunggay">
+                    <label for="Malunggay">Malunggay</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Ground peanuts">
-                    <label for="Ground peanuts">Ground peanuts</label>
+                    <input type="checkbox" id="Milkfish" name="Milkfish">
+                    <label for="Milkfish">Milkfish</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Ground pork">
-                    <label for="Ground pork">Ground pork</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Gulaman">
-                    <label for="Gulaman">Gulaman</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Hotdog">
-                    <label for="Hotdog">Hotdog</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Jackfruit">
-                    <label for="Jackfruit">Jackfruit</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Kangkong">
-                    <label for="Kangkong">Kangkong</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Lemongrass">
-                    <label for="Lemongrass">Lemongrass</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Lumpia wrappers">
-                    <label for="Lumpia wrappers">Lumpia wrappers</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Malunggay leaves">
-                    <label for="Malunggay leaves">Malunggay leaves</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Mangosteen">
-                    <label for="Mangosteen">Mangosteen</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Mongo beans">
-                    <label for="Mongo beans">Mongo beans</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Mushrooms">
-                    <label for="Mushrooms">Mushrooms</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Mustard greens">
-                    <label for="Mustard greens">Mustard greens</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Okra">
-                    <label for="Okra">Okra</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Olive oil">
-                    <label for="Olive oil">Olive oil</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Onion">
+                    <input type="checkbox" id="Onion" name="Onion">
                     <label for="Onion">Onion</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Pandan leaves">
-                    <label for="Pandan leaves">Pandan leaves</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Papaya">
+                    <input type="checkbox" id="Papaya" name="Papaya">
                     <label for="Papaya">Papaya</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Patola">
-                    <label for="Patola">Patola</label>
+                    <input type="checkbox" id="Peanut_butter" name="Peanut butter">
+                    <label for="Peanut_butter">Peanut butter</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Peanuts">
-                    <label for="Peanuts">Peanuts</label>
+                    <input type="checkbox" id="Potato" name="Potato">
+                    <label for="Potato">Potato</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Peppercorns">
-                    <label for="Peppercorns">Peppercorns</label>
+                    <input type="checkbox" id="Raddish" name="Raddish">
+                    <label for="Raddish">Raddish</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Pineapple chunks">
-                    <label for="Pineapple chunks">Pineapple chunks</label>
+                    <input type="checkbox" id="Salt" name="Salt">
+                    <label for="Salt">Salt</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Potatoes">
-                    <label for="Potatoes">Potatoes</label>
+                    <input type="checkbox" id="Soy_sauce" name="Soy sauce">
+                    <label for="Soy_sauce">Soy sauce</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Prawn paste">
-                    <label for="Prawn paste">Prawn paste</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Rice flour">
-                    <label for="Rice flour">Rice flour</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Salted duck eggs">
-                    <label for="Salted duck eggs">Salted duck eggs</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Shallots">
-                    <label for="Shallots">Shallots</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Siling labuyo">
-                    <label for="Siling labuyo">Siling labuyo</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Soy sauce">
-                    <label for="Soy sauce">Soy sauce</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Spring onions">
-                    <label for="Spring onions">Spring onions</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Squash">
-                    <label for="Squash">Squash</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Star anise">
-                    <label for="Star anise">Star anise</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Sugar">
-                    <label for="Sugar">Sugar</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Sweetcorn">
-                    <label for="Sweetcorn">Sweetcorn</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Tapioca pearls">
-                    <label for="Tapioca pearls">Tapioca pearls</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Taro">
-                    <label for="Taro">Taro</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Tomato">
-                    <label for="Tomato">Tomato</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Tofu">
+                    <input type="checkbox" id="Tofu" name="Tofu">
                     <label for="Tofu">Tofu</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Ube extract">
-                    <label for="Ube extract">Ube extract</label>
+                    <input type="checkbox" id="Tomato" name="Tomato">
+                    <label for="Tomato">Tomato</label>
                 </div>
                 <div class="item">
-                    <input type="checkbox" id="Upo">
-                    <label for="Upo">Upo</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Vanilla extract">
-                    <label for="Vanilla extract">Vanilla extract</label>
-                </div>
-                <div class="item">
-                    <input type="checkbox" id="Vermicelli noodles">
-                    <label for="Vermicelli noodles">Vermicelli noodles</label>
+                    <input type="checkbox" id="Vinegar" name="Vinegar">
+                    <label for="Vinegar">Vinegar</label>
                 </div>
             </div>
+            <button type="button" class="submit-btn" onclick="suggestRecipe()">Submit</button>
         </form>
-    </div>
-</body>
-</html>
-    
-
-    <div class="container">
-        <h1>Please select the ingredients</h1>
-        <form id="ingredientsForm">
-            <!-- Your checkboxes go here -->
-            <button type="submit" class="submit-btn">Submit</button>
-        </form>
+        <div id="results" class="results"></div>
     </div>
     <script>
-        document.getElementById('ingredientsForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            let selectedItems = [];
-            document.querySelectorAll('.item input[type="checkbox"]:checked').forEach(function(checkbox) {
-                selectedItems.push(checkbox.nextElementSibling.textContent);
-            });
-            alert('You have selected: ' + selectedItems.join(', '));
-        });
+        const recipes = [
+            {
+                name: "Tofu Adobo",
+                ingredients: ["Calamansi", "Egg", "Bay leaves", "Onion", "Salt", "Soy sauce", "Tofu"]
+            },
+            {
+                name: "Ginataang Manok",
+                ingredients: ["Chicken cuts", "Coconut milk", "Potato", "Onion", "Salt"]
+            },
+            {
+                name: "Sardines Ukoy",
+                ingredients: ["Canned Sardines", "Salt", "Flour"]
+            }
+        ];
+
+        function suggestRecipe() {
+            const form = document.getElementById('ingredientsForm');
+            const selectedIngredients = Array.from(form.elements)
+                .filter(input => input.checked)
+                .map(input => input.name);
+
+            const matchingRecipes = recipes.filter(recipe =>
+                recipe.ingredients.every(ingredient => selectedIngredients.includes(ingredient))
+            );
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+
+            if (matchingRecipes.length > 0) {
+                matchingRecipes.forEach(recipe => {
+                    const recipeDiv = document.createElement('div');
+                    recipeDiv.innerHTML = `<h2>${recipe.name}</h2><p>Ingredients: ${recipe.ingredients.join(', ')}</p>`;
+                    resultsDiv.appendChild(recipeDiv);
+                });
+            } else {
+                resultsDiv.innerHTML = '<p>No matching recipes found.</p>';
+            }
+        }
     </script>
 </body>
 </html>
